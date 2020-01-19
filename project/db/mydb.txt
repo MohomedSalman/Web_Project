@@ -1,0 +1,35 @@
+create table customer(
+	CId varchar(6) not null,
+	custFname varchar(30) not null,
+	custLname varchar(30) not null,
+	custAddress varchar(100) not null,
+	custEmail varchar(100) not null,
+	custTele varchar(11) not null,
+	custPassword varchar(50) not null,
+	constraint primary key(CID)
+);
+
+create table supplier(
+	SID varchar(6) not null,
+	sFname varchar(30) not null,
+	sLname varchar(30) not null,
+	sAddress varchar(100) not null,
+	sEmail varchar(100) not null, 
+	CONSTRAINT primary key(SID)
+);
+	
+
+create table item(
+	itemId varchar(10) not null,
+	iName varchar(50) not null,
+	supId varchar(10) not null,
+	iCategory varchar(50) null,
+	iSubcategory varchar(50) not null,
+	iTitle varchar(100) not null,
+	iPrice decimal(6,2) not null,
+	qtyOnHand int(5) not null,
+	constraint primary key(itemId),
+	constraint foreign key(supId) references supplier(supId)
+	on update cascade on delete cascade
+);
+
